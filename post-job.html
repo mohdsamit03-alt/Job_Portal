@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post a Job | WorkWave Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">W</div>
+        <span>Work<strong>Wave</strong></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="jobs.html" class="nav-link">Job Listings</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-link">Post a Job</a>
+        <a href="profile.html" class="nav-link">Candidate Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="saved-jobs-badge-btn" title="View Saved Jobs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="post-job.html" class="btn btn-primary btn-sm">+ Post a Job</a>
+        <button class="nav-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content: Post a Job Form -->
+  <main class="main-content">
+    <div class="container">
+      <div class="form-card">
+        <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-light); color: var(--primary); padding: 0.3rem 0.85rem; border-radius: var(--radius-full); font-size: 0.82rem; font-weight: 700; margin-bottom: 1rem;">
+          📢 Employer Portal
+        </div>
+        <h1 class="form-title">Create a New Job Posting</h1>
+        <p class="form-subtitle">Fill in the details below. Once published, your listing will dynamically appear across the Job Listings and Home page.</p>
+
+        <form id="post-job-form">
+          <div class="form-grid">
+            <!-- Job Title -->
+            <div class="form-group col-span-2">
+              <label class="form-label" for="job-title">Job Title <span class="required">*</span></label>
+              <input type="text" id="job-title" class="form-control" placeholder="e.g. Senior Cloud Solutions Architect" required>
+            </div>
+
+            <!-- Company Name -->
+            <div class="form-group">
+              <label class="form-label" for="company-name">Company Name <span class="required">*</span></label>
+              <input type="text" id="company-name" class="form-control" placeholder="e.g. CloudScale Systems" required>
+            </div>
+
+            <!-- Location -->
+            <div class="form-group">
+              <label class="form-label" for="job-location">Location <span class="required">*</span></label>
+              <input type="text" id="job-location" class="form-control" placeholder="e.g. Bengaluru, India or Remote" required>
+            </div>
+
+            <!-- Job Type -->
+            <div class="form-group">
+              <label class="form-label" for="job-type">Employment Type <span class="required">*</span></label>
+              <select id="job-type" class="form-control" required>
+                <option value="">-- Select Type --</option>
+                <option value="Full-time">Full-time</option>
+                <option value="Remote">Remote</option>
+                <option value="Part-time">Part-time</option>
+                <option value="Internship">Internship</option>
+              </select>
+            </div>
+
+            <!-- Experience Level -->
+            <div class="form-group">
+              <label class="form-label" for="job-experience">Experience Level <span class="required">*</span></label>
+              <select id="job-experience" class="form-control" required>
+                <option value="">-- Select Experience --</option>
+                <option value="Entry">Entry Level (0-2 yrs)</option>
+                <option value="Mid">Mid Level (3-5 yrs)</option>
+                <option value="Senior">Senior Level (5+ yrs)</option>
+              </select>
+            </div>
+
+            <!-- Salary -->
+            <div class="form-group">
+              <label class="form-label" for="job-salary">Compensation / Salary</label>
+              <input type="text" id="job-salary" class="form-control" placeholder="e.g. ₹18 - 25 LPA or $90,000 / yr">
+            </div>
+
+            <!-- Tags -->
+            <div class="form-group">
+              <label class="form-label" for="job-tags">Skills & Technologies (comma separated)</label>
+              <input type="text" id="job-tags" class="form-control" placeholder="e.g. React, AWS, Docker, Python">
+            </div>
+
+            <!-- Role Overview -->
+            <div class="form-group col-span-2">
+              <label class="form-label" for="job-overview">Role Overview <span class="required">*</span></label>
+              <textarea id="job-overview" class="form-control" placeholder="Brief summary describing the role and team..." required></textarea>
+            </div>
+
+            <!-- Responsibilities -->
+            <div class="form-group col-span-2">
+              <label class="form-label" for="job-responsibilities">Key Responsibilities (One per line)</label>
+              <textarea id="job-responsibilities" class="form-control" placeholder="- Architect cloud-native applications&#10;- Lead sprint planning and code reviews&#10;- Monitor uptime and service reliability"></textarea>
+            </div>
+
+            <!-- Requirements -->
+            <div class="form-group col-span-2">
+              <label class="form-label" for="job-requirements">Required Qualifications & Skills (One per line)</label>
+              <textarea id="job-requirements" class="form-control" placeholder="- 3+ years experience with cloud services&#10;- Solid understanding of JavaScript/TypeScript&#10;- B.Tech or equivalent degree"></textarea>
+            </div>
+
+            <!-- Benefits -->
+            <div class="form-group col-span-2">
+              <label class="form-label" for="job-benefits">Perks & Benefits (One per line)</label>
+              <textarea id="job-benefits" class="form-control" placeholder="- Flexible hybrid or remote work&#10;- Comprehensive health insurance&#10;- Annual learning & conference stipend"></textarea>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+            <a href="jobs.html" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="btn btn-primary btn-lg">Publish Job Opening &rarr;</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <p>&copy; 2026 WorkWave Portal. MSE 2 Practical Project 19.</p>
+        <p>Interactive feature: Newly posted jobs immediately show up in listings.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/post-job.js"></script>
+</body>
+</html>

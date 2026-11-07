@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WorkWave | Modern Tech Job Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">W</div>
+        <span>Work<strong>Wave</strong></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="jobs.html" class="nav-link">Job Listings</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-link">Post a Job</a>
+        <a href="profile.html" class="nav-link">Candidate Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="saved-jobs-badge-btn" title="View Saved Jobs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="post-job.html" class="btn btn-primary btn-sm">+ Post a Job</a>
+        <button class="nav-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Search -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-badge">🚀 Over 5,000+ Verified Cloud & Software Jobs</div>
+      <h1 class="hero-title">Discover Your Next Career Move in <span>Tech & Cloud</span></h1>
+      <p class="hero-subtitle">Connect with high-growth engineering startups, leading enterprise tech teams, and remote opportunities worldwide.</p>
+
+      <!-- Search Box Card -->
+      <div class="search-box-card">
+        <form class="search-form" action="jobs.html" method="GET">
+          <div class="input-group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" name="keyword" placeholder="Job title, skills (e.g. React, AWS), or company...">
+          </div>
+
+          <div class="input-group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <input type="text" name="location" placeholder="City, country, or 'Remote'...">
+          </div>
+
+          <button type="submit" class="btn btn-primary">Find Jobs</button>
+        </form>
+      </div>
+
+      <!-- Quick Stats -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <div class="stat-number">5,200+</div>
+          <div class="stat-label">Active Openings</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">850+</div>
+          <div class="stat-label">Hiring Companies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">120k+</div>
+          <div class="stat-label">Monthly Applicants</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">99.4%</div>
+          <div class="stat-label">Verified Employers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Jobs Section -->
+  <main class="main-content">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2>Featured Opportunities</h2>
+          <p>Hand-picked roles from top technology companies looking for talent today</p>
+        </div>
+        <a href="jobs.html" class="btn btn-outline btn-sm">View All Jobs &rarr;</a>
+      </div>
+
+      <!-- Dynamic Featured Jobs Container -->
+      <div id="featured-jobs-grid" class="job-grid">
+        <!-- Rendered by JavaScript -->
+      </div>
+
+      <!-- Browse By Categories -->
+      <section style="margin-top: 4.5rem;">
+        <div class="section-header">
+          <div>
+            <h2>Popular Job Categories</h2>
+            <p>Explore opportunities matching your specific technical background</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem;">
+          <a href="jobs.html?keyword=Cloud" class="job-card" style="padding: 1.5rem; text-align: left;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">☁️</div>
+            <h4 style="font-weight: 700; color: var(--secondary);">Cloud & DevOps</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">AWS, Azure, Docker, Kubernetes</p>
+          </a>
+          <a href="jobs.html?keyword=Frontend" class="job-card" style="padding: 1.5rem; text-align: left;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+            <h4 style="font-weight: 700; color: var(--secondary);">Frontend Development</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">React, Vue, TypeScript, Tailwind</p>
+          </a>
+          <a href="jobs.html?keyword=Backend" class="job-card" style="padding: 1.5rem; text-align: left;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚡</div>
+            <h4 style="font-weight: 700; color: var(--secondary);">Backend & APIs</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Node.js, Python, PostgreSQL, REST</p>
+          </a>
+          <a href="jobs.html?type=Remote" class="job-card" style="padding: 1.5rem; text-align: left;">
+            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌐</div>
+            <h4 style="font-weight: 700; color: var(--secondary);">100% Remote Roles</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Work from anywhere across globe</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Post a Job Callout Banner -->
+      <section style="margin-top: 4.5rem; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%); border-radius: var(--radius-lg); padding: 3.5rem 2.5rem; color: #fff; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; box-shadow: var(--shadow-lg);">
+        <div style="max-width: 600px;">
+          <h2 style="font-size: 2.15rem; font-weight: 800; line-height: 1.2; margin-bottom: 0.75rem;">Are You Hiring Tech Talent?</h2>
+          <p style="color: #bfdbfe; font-size: 1.05rem; line-height: 1.6;">
+            Publish your job opening in seconds. Your posted jobs immediately appear in our live listings and reach verified software engineers.
+          </p>
+        </div>
+        <a href="post-job.html" class="btn" style="background: #fff; color: #1e40af; font-weight: 700; padding: 0.95rem 2rem; font-size: 1.05rem; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+          Post a Job Now &rarr;
+        </a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="brand-logo">
+            <div class="brand-icon">W</div>
+            <span style="color:#fff;">Work<strong>Wave</strong></span>
+          </div>
+          <p>The modern career portal connecting software engineers, cloud architects, and ambitious builders with verified technology teams.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Job Seekers</h4>
+          <ul class="footer-links">
+            <li><a href="jobs.html">Browse Job Listings</a></li>
+            <li><a href="companies.html">Company Directory</a></li>
+            <li><a href="profile.html">Saved Jobs</a></li>
+            <li><a href="profile.html">Candidate Profile</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>For Employers</h4>
+          <ul class="footer-links">
+            <li><a href="post-job.html">Post a New Job</a></li>
+            <li><a href="companies.html">Employer Profiles</a></li>
+            <li><a href="jobs.html">Talent Search</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Practical Info</h4>
+          <p style="font-size: 0.85rem; line-height: 1.6;">
+            <strong>MSE 2 Practical:</strong> Project 19 (Job Portal - Advanced)<br>
+            HTML5, CSS3, ES6 JavaScript<br>
+            Responsive & Interactive
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 WorkWave Portal. Created for MSE 2 Web Development Practical.</p>
+        <p>Built with Pure HTML5, CSS3 & JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Load and render top 6 featured jobs on the home page
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("featured-jobs-grid");
+      if (container) {
+        const jobs = DataManager.getJobs();
+        const featured = jobs.slice(0, 6);
+        container.innerHTML = featured.map(job => createJobCardHTML(job)).join("");
+      }
+    });
+  </script>
+</body>
+</html>

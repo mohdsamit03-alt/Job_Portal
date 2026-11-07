@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Details | WorkWave Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">W</div>
+        <span>Work<strong>Wave</strong></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="jobs.html" class="nav-link active">Job Listings</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-link">Post a Job</a>
+        <a href="profile.html" class="nav-link">Candidate Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="saved-jobs-badge-btn" title="View Saved Jobs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="post-job.html" class="btn btn-primary btn-sm">+ Post a Job</a>
+        <button class="nav-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb Bar -->
+  <div style="background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 0.85rem 0; font-size: 0.88rem; color: var(--text-muted);">
+    <div class="container">
+      <a href="index.html" style="color: var(--primary);">Home</a>
+      <span style="margin: 0 0.5rem;">/</span>
+      <a href="jobs.html" style="color: var(--primary);">Job Listings</a>
+      <span style="margin: 0 0.5rem;">/</span>
+      <span>Job Details</span>
+    </div>
+  </div>
+
+  <!-- Job Details Container -->
+  <main class="main-content">
+    <div class="container" id="job-details-view">
+      <!-- Injected by js/job-details.js -->
+      <div style="text-align: center; padding: 4rem 0;">
+        <p style="color: var(--text-muted);">Loading job specifications...</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <p>&copy; 2026 WorkWave Portal. MSE 2 Practical Project 19.</p>
+        <p><a href="jobs.html" style="color: #60a5fa;">&larr; Back to all job openings</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/job-details.js"></script>
+</body>
+</html>

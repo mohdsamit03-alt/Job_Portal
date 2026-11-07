@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidate Profile | WorkWave Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">W</div>
+        <span>Work<strong>Wave</strong></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="jobs.html" class="nav-link">Job Listings</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-link">Post a Job</a>
+        <a href="profile.html" class="nav-link">Candidate Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="saved-jobs-badge-btn" title="View Saved Jobs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="post-job.html" class="btn btn-primary btn-sm">+ Post a Job</a>
+        <button class="nav-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Candidate Profile Header -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- User Overview Card -->
+      <div class="profile-header-card">
+        <div class="profile-user-info">
+          <div class="profile-avatar" id="profile-header-avatar">MS</div>
+          <div>
+            <h1 class="profile-name" id="profile-header-name">Mohd Samit</h1>
+            <p class="profile-headline" id="profile-header-headline">Aspiring Cloud & Full Stack Web Developer</p>
+            <div id="profile-header-meta" style="margin-top: 0.5rem; display: flex; gap: 0.75rem; font-size: 0.88rem; color: var(--text-muted); flex-wrap: wrap;"></div>
+          </div>
+        </div>
+
+        <div>
+          <a href="jobs.html" class="btn btn-primary">Browse Open Jobs</a>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="profile-tabs">
+        <button class="profile-tab-btn active" data-tab="tab-saved">
+          🔖 Saved Jobs <span id="saved-jobs-count-text" style="font-weight: 700; color: var(--primary);">(0)</span>
+        </button>
+        <button class="profile-tab-btn" data-tab="tab-applications">
+          📄 My Applications
+        </button>
+        <button class="profile-tab-btn" data-tab="tab-edit">
+          ⚙️ Edit Profile
+        </button>
+      </div>
+
+      <!-- Tab 1: Saved Jobs -->
+      <div id="tab-saved" class="profile-tab-pane">
+        <div id="saved-jobs-container">
+          <!-- Populated by profile.js -->
+        </div>
+      </div>
+
+      <!-- Tab 2: My Applications -->
+      <div id="tab-applications" class="profile-tab-pane" style="display: none;">
+        <div id="applications-container">
+          <!-- Populated by profile.js -->
+        </div>
+      </div>
+
+      <!-- Tab 3: Edit Profile Settings -->
+      <div id="tab-edit" class="profile-tab-pane" style="display: none;">
+        <div class="form-card" style="margin: 0; max-width: 100%;">
+          <h2 style="font-size: 1.4rem; font-weight: 700; color: var(--secondary); margin-bottom: 1.5rem;">Update Candidate Information</h2>
+          <form id="profile-edit-form">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="edit-fullname">Full Name</label>
+                <input type="text" id="edit-fullname" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-email">Email Address</label>
+                <input type="email" id="edit-email" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-phone">Phone Number</label>
+                <input type="tel" id="edit-phone" class="form-control" required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="edit-location">Location / City</label>
+                <input type="text" id="edit-location" class="form-control">
+              </div>
+
+              <div class="form-group col-span-2">
+                <label class="form-label" for="edit-headline">Professional Headline</label>
+                <input type="text" id="edit-headline" class="form-control">
+              </div>
+
+              <div class="form-group col-span-2">
+                <label class="form-label" for="edit-skills">Key Skills (comma separated)</label>
+                <input type="text" id="edit-skills" class="form-control">
+              </div>
+
+              <div class="form-group col-span-2">
+                <label class="form-label" for="edit-bio">Short Bio / Summary</label>
+                <textarea id="edit-bio" class="form-control" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+              <button type="submit" class="btn btn-primary">Save Profile Changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <p>&copy; 2026 WorkWave Portal. MSE 2 Practical Project 19.</p>
+        <p>Interactive feature: Saved jobs & applications synced via localStorage.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

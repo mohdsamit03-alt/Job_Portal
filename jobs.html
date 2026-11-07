@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Listings | WorkWave Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">W</div>
+        <span>Work<strong>Wave</strong></span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="jobs.html" class="nav-link">Job Listings</a>
+        <a href="companies.html" class="nav-link">Companies</a>
+        <a href="post-job.html" class="nav-link">Post a Job</a>
+        <a href="profile.html" class="nav-link">Candidate Profile</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="profile.html" class="saved-jobs-badge-btn" title="View Saved Jobs">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+          </svg>
+          <span>Saved</span>
+          <span class="badge-count">0</span>
+        </a>
+        <a href="post-job.html" class="btn btn-primary btn-sm">+ Post a Job</a>
+        <button class="nav-toggle-btn" aria-label="Toggle navigation">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Filter & Search Banner -->
+  <section style="background: var(--bg-card); border-bottom: 1px solid var(--border-color); padding: 2rem 0;">
+    <div class="container">
+      <div class="search-box-card" style="box-shadow: none; border: 1px solid var(--border-color); margin: 0; max-width: 100%;">
+        <div class="search-form">
+          <div class="input-group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="filter-keyword" placeholder="Search by role, skill (e.g. AWS, React), or company...">
+          </div>
+
+          <div class="input-group">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <input type="text" id="filter-location" placeholder="Filter by location (e.g. Bengaluru, Remote)...">
+          </div>
+
+          <button type="button" id="btn-reset-filters" class="btn btn-secondary">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Listings Layout (Sidebar + Results) -->
+  <main class="main-content">
+    <div class="container">
+      <div class="listings-layout">
+        
+        <!-- Left Sidebar: Filters -->
+        <aside class="filters-sidebar">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary);">Filter Jobs</h3>
+            <button class="filter-reset-btn" id="sidebar-reset-btn" onclick="document.getElementById('btn-reset-filters').click()">Clear All</button>
+          </div>
+
+          <!-- Job Type Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">Job Type</h4>
+            <label class="filter-option">
+              <input type="checkbox" name="job-type" value="Full-time">
+              <span>Full-time</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="job-type" value="Remote">
+              <span>Remote</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="job-type" value="Part-time">
+              <span>Part-time</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="job-type" value="Internship">
+              <span>Internship</span>
+            </label>
+          </div>
+
+          <!-- Experience Level Filter -->
+          <div class="filter-group">
+            <h4 class="filter-title">Experience Level</h4>
+            <label class="filter-option">
+              <input type="checkbox" name="experience" value="Entry">
+              <span>Entry Level (0-2 yrs)</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="experience" value="Mid">
+              <span>Mid Level (3-5 yrs)</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" name="experience" value="Senior">
+              <span>Senior Level (5+ yrs)</span>
+            </label>
+          </div>
+
+          <!-- Info Box -->
+          <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); font-size: 0.82rem; color: var(--text-muted);">
+            💡 <strong>Interactive Filter:</strong> Check boxes or type above to instantly filter jobs in real-time without refreshing.
+          </div>
+        </aside>
+
+        <!-- Right Content: Job Results -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h2 style="font-size: 1.5rem; font-weight: 800; color: var(--secondary);" id="jobs-count">Loading Jobs...</h2>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">Showing available opportunities matching your criteria</p>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <label for="filter-sort" style="font-size: 0.88rem; font-weight: 600; color: var(--text-muted);">Sort by:</label>
+              <select id="filter-sort" class="form-control" style="width: auto; padding: 0.4rem 0.85rem; font-size: 0.88rem;">
+                <option value="newest">Most Recent</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Jobs List Grid -->
+          <div id="jobs-list-container" class="job-grid">
+            <!-- Populated dynamically by js/jobs.js -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <p>&copy; 2026 WorkWave Portal. MSE 2 Practical Project 19.</p>
+        <p><a href="post-job.html" style="color: #60a5fa;">Have a position to fill? Post a job now &rarr;</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/jobs.js"></script>
+</body>
+</html>
