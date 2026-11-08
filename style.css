@@ -1,7 +1,12 @@
 /* ==========================================================================
    MSE 2 Practical: Job Portal (Advanced)
    Modern, Responsive, Production-Ready CSS
+   FAANG & Apple Design System Typography
    ========================================================================== */
+
+/* Apple & FAANG Elite Web Font Imports */
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
   --primary: #2563eb;
@@ -38,7 +43,16 @@
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
 
-  --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  /* FAANG & Apple Typography Stack:
+     1. SF Pro Display / SF Pro Text (Apple native & web kit)
+     2. Inter (The modern FAANG open-source standard created by Rasmus Andersson)
+     3. Geist (Vercel & Next.js neo-grotesque)
+     4. Apple system fallback (-apple-system, BlinkMacSystemFont)
+     5. High-grade platform sans */
+  --font-family: 'SF Pro Text', 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Inter', 'Geist', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Geist', 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', ui-monospace, Menlo, Monaco, Consolas, 'Cascadia Code', monospace;
+
   --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -55,9 +69,23 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-body);
   color: var(--text-main);
-  line-height: 1.6;
+  line-height: 1.55;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  /* Apple's signature subpixel rendering & optical font antialiasing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+/* Apple & FAANG Display Typography Rules */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.025em;
+  color: var(--secondary);
+}
   flex-direction: column;
 }
 
@@ -115,10 +143,11 @@ textarea {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  font-family: var(--font-display);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--secondary);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
 }
 
 .brand-icon,
@@ -222,8 +251,10 @@ textarea {
   gap: 0.5rem;
   padding: 0.65rem 1.35rem;
   border-radius: var(--radius-md);
+  font-family: var(--font-family);
   font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
   border: 1px solid transparent;
   transition: var(--transition);
@@ -327,22 +358,24 @@ textarea {
 .hero-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  background: #dbeafe;
-  color: #1e40af;
-  padding: 0.35rem 0.9rem;
+  gap: 0.45rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 0.35rem 0.95rem;
   border-radius: var(--radius-full);
-  font-size: 0.85rem;
-  font-weight: 700;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   margin-bottom: 1.25rem;
   border: 1px solid #bfdbfe;
 }
 
 .hero-title {
-  font-size: 2.85rem;
-  font-weight: 800;
-  letter-spacing: -1px;
-  line-height: 1.2;
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
   color: var(--secondary);
   max-width: 820px;
   margin: 0 auto 1.25rem;
@@ -356,10 +389,12 @@ textarea {
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--text-muted);
   max-width: 640px;
   margin: 0 auto 2.25rem;
+  letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
 /* Search Bar Component */
@@ -433,17 +468,22 @@ textarea {
 }
 
 .stat-number {
-  font-size: 1.85rem;
-  font-weight: 800;
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 750;
   color: var(--secondary);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  font-feature-settings: 'tnum' on;
 }
 
 .stat-label {
-  font-size: 0.85rem;
+  font-size: 0.76rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
   font-weight: 600;
+  margin-top: 0.2rem;
 }
 
 /* Main Content Wrapper */
@@ -462,10 +502,11 @@ textarea {
 }
 
 .section-header h2 {
+  font-family: var(--font-display);
   font-size: 1.85rem;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--secondary);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
 }
 
 .section-header p {
@@ -514,10 +555,38 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 700;
   flex-shrink: 0;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.job-card:hover .company-logo {
+  transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.company-logo svg {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.company-card .company-logo {
+  width: 68px;
+  height: 68px;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.company-card .company-logo svg {
+  width: 36px;
+  height: 36px;
 }
 
 .job-title-group {
@@ -526,9 +595,11 @@ textarea {
 }
 
 .job-title {
-  font-size: 1.12rem;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 650;
   color: var(--secondary);
+  letter-spacing: -0.015em;
   margin-bottom: 0.2rem;
   white-space: nowrap;
   overflow: hidden;
