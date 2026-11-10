@@ -119,9 +119,7 @@ function createJobCardHTML(job) {
   return `
     <article class="job-card" data-job-id="${job.id}">
       <div class="job-card-header">
-        <div class="company-logo" style="background-color: ${job.logoColor || '#2563eb'};">
-          ${job.logoInitials || job.company.substring(0, 2).toUpperCase()}
-        </div>
+        ${getCompanyLogoHTML(job.company, { color: job.logoColor, initials: job.logoInitials })}
         <div class="job-title-group">
           <h3 class="job-title"><a href="job-details.html?id=${job.id}">${job.title}</a></h3>
           <p class="company-name">${job.company}</p>

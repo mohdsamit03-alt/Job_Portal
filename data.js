@@ -3,6 +3,183 @@
  * Handles persistent storage for Jobs, Saved Jobs, Applications, and Companies.
  */
 
+// FAANG & Ecosystem Company Brand Registry with Vector Icons
+const COMPANY_BRAND_MAP = {
+  "cloudscale systems": {
+    name: "CloudScale Systems",
+    bg: "linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%)",
+    initials: "CS",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+      <path d="M12 13v6"></path>
+      <path d="m9 16 3-3 3 3"></path>
+    </svg>`
+  },
+  "nexus fintech": {
+    name: "Nexus FinTech",
+    bg: "linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%)",
+    initials: "NF",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+      <polyline points="2 17 12 22 22 17"></polyline>
+      <polyline points="2 12 12 17 22 12"></polyline>
+    </svg>`
+  },
+  "innovatex digital": {
+    name: "InnovateX Digital",
+    bg: "linear-gradient(135deg, #065f46 0%, #059669 50%, #10b981 100%)",
+    initials: "IX",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="16 18 22 12 16 6"></polyline>
+      <polyline points="8 6 2 12 8 18"></polyline>
+      <line x1="14" y1="4" x2="10" y2="20"></line>
+    </svg>`
+  },
+  "pixelcraft studios": {
+    name: "PixelCraft Studios",
+    bg: "linear-gradient(135deg, #b45309 0%, #d97706 50%, #f59e0b 100%)",
+    initials: "PC",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path>
+      <path d="m2 2 7.586 7.586"></path>
+      <circle cx="11" cy="11" r="2"></circle>
+    </svg>`
+  },
+  "aura creative tech": {
+    name: "Aura Creative Tech",
+    bg: "linear-gradient(135deg, #581c87 0%, #7c3aed 50%, #8b5cf6 100%)",
+    initials: "AC",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="12" cy="12" r="4"></circle>
+      <line x1="12" y1="2" x2="12" y2="4"></line>
+      <line x1="12" y1="20" x2="12" y2="22"></line>
+      <line x1="2" y1="12" x2="4" y2="12"></line>
+      <line x1="20" y1="12" x2="22" y2="12"></line>
+    </svg>`
+  },
+  "datasphere ai": {
+    name: "DataSphere AI",
+    bg: "linear-gradient(135deg, #9d174d 0%, #db2777 50%, #ec4899 100%)",
+    initials: "DS",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"></circle>
+      <circle cx="5" cy="6" r="2"></circle>
+      <circle cx="19" cy="6" r="2"></circle>
+      <circle cx="5" cy="18" r="2"></circle>
+      <circle cx="19" cy="18" r="2"></circle>
+      <line x1="7" y1="7" x2="10" y2="10.5"></line>
+      <line x1="17" y1="7" x2="14" y2="10.5"></line>
+      <line x1="7" y1="17" x2="10" y2="13.5"></line>
+      <line x1="17" y1="17" x2="14" y2="13.5"></line>
+    </svg>`
+  },
+  // FAANG & Top Tech Brands
+  "apple": {
+    name: "Apple",
+    bg: "linear-gradient(135deg, #18181b 0%, #27272a 100%)",
+    initials: "AP",
+    svg: `<svg viewBox="0 0 170 170" fill="currentColor">
+      <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.54-7.66-11.56-13.84-5.66-8.7-10.05-18.42-13.17-29.17-3.12-10.74-4.68-21.05-4.68-29.93 0-13.79 3.5-25.13 10.51-34.02 7.01-8.89 15.86-13.41 26.54-13.56 5.42 0 11.22 1.39 17.42 4.17 6.2 2.78 10.15 4.22 11.85 4.31 1.48-.13 5.56-1.61 12.24-4.44 6.69-2.83 12.38-4.08 17.07-3.76 12.73.91 22.84 5.87 30.34 14.88-11.05 6.74-16.48 16.09-16.29 28.05.22 9.46 3.84 17.39 10.87 23.78 7.03 6.39 15.34 10.14 24.93 11.26-2.17 6.52-4.78 13.04-7.84 19.56zM119.22 31.84c0-7.74 2.78-14.89 8.35-21.46 5.57-6.57 12.3-10.38 20.2-11.44.22 1.09.33 2.17.33 3.26 0 7.61-2.93 15-8.8 22.17-5.87 7.17-13.04 11.08-21.52 11.74-.22-1.41-.33-2.61-.33-3.61z"/>
+    </svg>`
+  },
+  "google": {
+    name: "Google",
+    bg: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
+    initials: "GG",
+    svg: `<svg viewBox="0 0 24 24">
+      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+    </svg>`
+  },
+  "amazon": {
+    name: "Amazon",
+    bg: "linear-gradient(135deg, #0f172a 0%, #232f3e 100%)",
+    initials: "AM",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 17c3.5 2.5 8.5 3.5 13 1"></path>
+      <path d="M14 17l4 1-2-3.5"></path>
+      <circle cx="8" cy="8" r="4"></circle>
+    </svg>`
+  },
+  "aws": {
+    name: "AWS",
+    bg: "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+    initials: "AWS",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+      <polyline points="12 12 15 15 12 18"></polyline>
+    </svg>`
+  },
+  "meta": {
+    name: "Meta",
+    bg: "linear-gradient(135deg, #0064e0 0%, #0081fb 100%)",
+    initials: "MT",
+    svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 12c-2-3-4-5-7-5a5 5 0 0 0 0 10c3 0 5-2 7-5 2 3 4 5 7 5a5 5 0 0 0 0-10c-3 0-5 2-7 5Z"></path>
+    </svg>`
+  },
+  "netflix": {
+    name: "Netflix",
+    bg: "linear-gradient(135deg, #141414 0%, #000000 100%)",
+    initials: "NF",
+    svg: `<svg viewBox="0 0 24 24" fill="#e50914">
+      <path d="M4 2v20l4-2V2H4zm8 0v20l4-2V2h-4zm-4 4.5L16 22V2L8 6.5z"/>
+    </svg>`
+  },
+  "microsoft": {
+    name: "Microsoft",
+    bg: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+    initials: "MS",
+    svg: `<svg viewBox="0 0 24 24">
+      <rect x="2" y="2" width="9" height="9" fill="#f25022"/>
+      <rect x="13" y="2" width="9" height="9" fill="#7fba00"/>
+      <rect x="2" y="13" width="9" height="9" fill="#00a4ef"/>
+      <rect x="13" y="13" width="9" height="9" fill="#ffb900"/>
+    </svg>`
+  }
+};
+
+/**
+ * Universal Company Logo Component Generator
+ * Renders verified SVGs for companies across Home, Jobs Portal, Company Directory, and Job Details
+ */
+function getCompanyLogoHTML(companyName = "", options = {}) {
+  const nameClean = (companyName || "").toLowerCase().trim();
+  const brand = COMPANY_BRAND_MAP[nameClean];
+  const size = options.size || 52;
+  const customClass = options.className || "";
+
+  if (brand) {
+    return `
+      <div class="company-logo ${customClass}" 
+           style="background: ${brand.bg}; width: ${size}px; height: ${size}px;" 
+           title="${brand.name}" 
+           aria-label="${brand.name} Logo">
+        ${brand.svg}
+      </div>
+    `;
+  }
+
+  // Fallback for custom user-posted companies
+  const bg = options.color || "linear-gradient(135deg, #2563eb 0%, #3b82f6 100%)";
+  const initials = options.initials || (companyName ? companyName.substring(0, 2).toUpperCase() : "JB");
+
+  return `
+    <div class="company-logo ${customClass}" 
+         style="background: ${bg}; width: ${size}px; height: ${size}px;" 
+         title="${companyName || 'Company'}"
+         aria-label="${companyName || 'Company'}">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 50%; height: 50%;">
+        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+      </svg>
+    </div>
+  `;
+}
+
 const SEED_JOBS = [
   {
     id: "job-101",
@@ -441,7 +618,27 @@ const DataManager = {
   getProfile() {
     try {
       const stored = localStorage.getItem(STORAGE_KEYS.CANDIDATE_PROFILE);
-      if (stored) return JSON.parse(stored);
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        // Automatic seamless migration from legacy headline
+        if (!parsed.headline || parsed.headline.includes("Aspiring Cloud")) {
+          parsed.headline = "AI Systems Engineer | Distributed Architecture & Large-Scale Systems";
+          parsed.skills = [
+            "AI Systems Design",
+            "Distributed Systems",
+            "Generative AI & LLMs",
+            "Python / PyTorch",
+            "AWS Cloud Infrastructure",
+            "FastAPI & Microservices",
+            "Docker & Kubernetes",
+            "High-Throughput APIs"
+          ];
+          parsed.bio = "AI Systems Engineer specialized in architecting large-scale distributed architectures, high-throughput microservices, and production GenAI pipelines.";
+          parsed.resumeName = "Mohd_Samit_AI_Systems_Engineer_Resume.pdf";
+          localStorage.setItem(STORAGE_KEYS.CANDIDATE_PROFILE, JSON.stringify(parsed));
+        }
+        return parsed;
+      }
     } catch (e) {}
 
     // Default profile
@@ -449,13 +646,22 @@ const DataManager = {
       fullName: "Mohd Samit",
       email: "samit.dev@example.com",
       phone: "+91 98765 43210",
-      headline: "Aspiring Cloud & Full Stack Web Developer",
+      headline: "AI Systems Engineer | Distributed Architecture & Large-Scale Systems",
       location: "Bengaluru, India",
-      experience: "Entry",
-      skills: ["HTML5", "CSS3", "JavaScript", "AWS Cloud", "Git & GitHub"],
-      bio: "Passionate developer building responsive web applications and cloud infrastructure.",
-      resumeName: "Mohd_Samit_Resume.pdf",
-      resumeUploadDate: "2026-11-06"
+      experience: "Mid",
+      skills: [
+        "AI Systems Design",
+        "Distributed Systems",
+        "Generative AI & LLMs",
+        "Python / PyTorch",
+        "AWS Cloud Infrastructure",
+        "FastAPI & Microservices",
+        "Docker & Kubernetes",
+        "High-Throughput APIs"
+      ],
+      bio: "AI Systems Engineer specialized in architecting large-scale distributed architectures, high-throughput microservices, and production GenAI pipelines.",
+      resumeName: "Mohd_Samit_AI_Systems_Engineer_Resume.pdf",
+      resumeUploadDate: "2026-11-08"
     };
   },
 

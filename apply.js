@@ -45,9 +45,7 @@ function initApplyPage() {
       jobBanner.style.display = "block";
       jobBanner.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.75rem;">
-          <div class="company-logo" style="background: ${targetJob.logoColor || '#2563eb'}; width: 44px; height: 44px; font-size: 1rem;">
-            ${targetJob.logoInitials || 'JB'}
-          </div>
+          ${getCompanyLogoHTML(targetJob.company, { size: 44, color: targetJob.logoColor, initials: targetJob.logoInitials })}
           <div>
             <h4 style="font-size: 1.05rem; font-weight: 700; color: var(--secondary);">${targetJob.title}</h4>
             <p style="font-size: 0.85rem; color: var(--text-muted);">${targetJob.company} • ${targetJob.location} • ${targetJob.salary}</p>

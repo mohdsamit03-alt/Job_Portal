@@ -60,9 +60,7 @@ function initCompaniesPage() {
 
       return `
         <div class="company-card">
-          <div class="company-logo" style="background-color: ${comp.logoColor};">
-            ${comp.logoInitials}
-          </div>
+          ${getCompanyLogoHTML(comp.name, { size: 68, color: comp.logoColor, initials: comp.logoInitials })}
           <h3 class="company-card-name">${comp.name}</h3>
           <p class="company-card-industry">
             <span class="pill pill-blue">${comp.industry}</span>

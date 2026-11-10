@@ -65,9 +65,7 @@ function initJobDetailsPage() {
     <div class="job-detail-header">
       <div class="job-detail-top">
         <div class="job-detail-company-wrap">
-          <div class="company-logo" style="background-color: ${job.logoColor || '#2563eb'}; width: 64px; height: 64px; font-size: 1.4rem;">
-            ${job.logoInitials || job.company.substring(0, 2).toUpperCase()}
-          </div>
+          ${getCompanyLogoHTML(job.company, { size: 64, color: job.logoColor, initials: job.logoInitials })}
           <div>
             <h1 class="job-detail-title">${job.title}</h1>
             <p class="company-name" style="font-size: 1.05rem;">

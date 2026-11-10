@@ -119,11 +119,14 @@ function renderApplications() {
     <div style="display: flex; flex-direction: column; gap: 1rem;">
       ${applications.map(app => `
         <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-          <div>
-            <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.2rem;">${app.jobTitle}</h4>
-            <p style="font-size: 0.88rem; color: var(--text-muted);">${app.company} • Applied on ${new Date(app.appliedAt).toLocaleDateString()}</p>
-            <div style="margin-top: 0.4rem; font-size: 0.82rem; color: var(--primary);">
-              📄 <strong>Resume:</strong> ${app.resumeFileName} (${app.resumeFileSize})
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            ${getCompanyLogoHTML(app.company, { size: 48 })}
+            <div>
+              <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--secondary); margin-bottom: 0.2rem;">${app.jobTitle}</h4>
+              <p style="font-size: 0.88rem; color: var(--text-muted);">${app.company} • Applied on ${new Date(app.appliedAt).toLocaleDateString()}</p>
+              <div style="margin-top: 0.4rem; font-size: 0.82rem; color: var(--primary);">
+                📄 <strong>Resume:</strong> ${app.resumeFileName} (${app.resumeFileSize})
+              </div>
             </div>
           </div>
           <div style="display: flex; align-items: center; gap: 1rem;">
